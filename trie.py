@@ -1,16 +1,16 @@
-class TrieTreeNode(object):
+class TrieNode(object):
 
     def __init__(self, price=0):
-        """Initialize this binary tree node with the given data."""
+        """Initialize this trie node."""
         self.price = price
         self.children = [None] * 10
 
     def __repr__(self):
-        """Return a string representation of this binary tree node."""
+        """Return a string representation of this trie node."""
         return 'TrieTreeNode({!r})'.format(self.data)
 
     def is_leaf(self):
-        """Return True if this node is a leaf (all decimals are None)."""
+        """Return True if this node is a leaf (all children are None)."""
         for child in self.children:
             if child != None:
                 return False
