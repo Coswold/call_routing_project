@@ -73,4 +73,5 @@ class Trie(object):
                 current.children[int(num)] = TrieNode()
                 self.size += 1
             current = current.children[int(num)]
-        current.price = price
+        if current.price == 0 or current.price > price:
+            current.price = price

@@ -59,10 +59,16 @@ class TrieTest(unittest.TestCase):
         assert tree.root.children[1].children[2].children[3].price == 0.5
         assert tree.is_empty() is False
 
-    # def test_init_with_list_of_strings(self):
-    #     tree = BinarySearchTree(['B', 'A', 'C'])
-    #     assert tree.root.data == 'B'
-    #     assert tree.root.left.data == 'A'
-    #     assert tree.root.right.data == 'C'
-    #     assert tree.size == 3
-    #     assert tree.is_empty() is False
+    def test_size(self):
+        tree = Trie([('123', 0.5), ('456', 1.2), ('78911', 0.9)])
+        assert tree.height() == 5
+        assert tree.size == 11
+        tree.insert('1234', 0.8)
+        assert tree.height() == 5
+        assert tree.size == 12
+        tree.insert('1234', 0.9)
+        assert tree.height() == 5
+        assert tree.size == 12
+        tree.insert('78922222', 0.8)
+        assert tree.height() == 8
+        assert tree.size == 17
