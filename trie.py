@@ -59,11 +59,13 @@ class Trie(object):
         """Return the price of the call for the number input."""
         current = self.root
         for num in number:
-            if current.children[int(num)] != None:
-                current = current.children[num]
-            else:
-                return current.price
-        return 0
+            if current is not None:
+                current = current.children[int(num)]
+
+        if current != None:
+            return current.price
+        else:
+            return 0
 
     def insert(self, call_path, price):
         """Insert the path of the call codes into this trie."""
