@@ -88,4 +88,22 @@ class TrieTest(unittest.TestCase):
         assert tree.search('78922221') == 0
         assert tree.search('95') == 0
 
-    
+    def test_insert(self):
+        tree = Trie([('123', 0.5), ('456', 1.2), ('78911', 0.9)])
+        assert tree.height() == 5
+        assert tree.size == 11
+        tree.insert('123', 0.1)
+        assert tree.height() == 5
+        assert tree.size == 11
+        assert tree.search('123') == 0.1
+        tree.insert('950', 0.2)
+        assert tree.height() == 5
+        assert tree.size == 14
+        assert tree.search('950') == 0.2
+        tree.insert('950', 0.2)
+        assert tree.height() == 5
+        assert tree.size == 14
+        tree.insert('78911000', 1.05)
+        assert tree.height() == 8
+        assert tree.size == 17
+        assert tree.search('78911000') == 1.05
