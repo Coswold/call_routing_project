@@ -7,7 +7,7 @@ class TrieNode(object):
 
     def __repr__(self):
         """Return a string representation of this trie node."""
-        return 'TrieTreeNode({!r})'.format(self.data)
+        return 'TrieNode({!r})'.format(self.children)
 
     def is_leaf(self):
         """Return True if this node is a leaf (all children are None)."""
@@ -23,7 +23,7 @@ class TrieNode(object):
     def height(self):
         """Return the height of this node (the number of edges on the longest
         downward path from this node to a descendant leaf node)."""
-        height = 1
+        height = 0
         heights = [height]
         for child in self.children:
             if child != None:
@@ -36,9 +36,10 @@ class Trie(object):
     def __init__(self, number_paths=None):
         """Initialize this binary search tree and insert the given items."""
         self.root = TrieNode()
-        self.size = 1
-        for path in number_paths:
-            self.insert(path)
+        self.size = 0
+        if number_paths != None:
+            for path in number_paths:
+                self.insert(path[0], path[1])
 
     def __repr__(self):
         """Return a string representation of this trie."""
@@ -58,7 +59,7 @@ class Trie(object):
         """Return the price of the call for the number input."""
         current = self.root
         for num in number:
-            if current.children[num] != None:
+            if current.children[int(num)] != None:
                 current = current.children[num]
             else:
                 return current.price
@@ -68,7 +69,8 @@ class Trie(object):
         """Insert the path of the call codes into this trie."""
         current = self.root
         for num in call_path:
-            if current.children[num] == None:
-                current.children[num] = TrieNode()
+            if current.children[int(num)] == None:
+                current.children[int(num)] = TrieNode()
                 self.size += 1
+            current = current.children[int(num)]
         current.price = price

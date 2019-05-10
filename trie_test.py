@@ -35,11 +35,34 @@ class TrieNodeTest(unittest.TestCase):
         # Create node with no children
         price = 0.04
         node = TrieNode(price)
-        assert node.height() == 1
+        assert node.height() == 0
         # Attach child node
         node.children[2] = TrieNode(0.5)
-        assert node.height() == 2
+        assert node.height() == 1
         node.children[2].children[4] = TrieNode(0.6)
-        assert node.height() == 3
+        assert node.height() == 2
         node.children[2].children[3] = TrieNode(0.6)
-        assert node.height() == 3
+        assert node.height() == 2
+
+class TrieTest(unittest.TestCase):
+
+    def test_init(self):
+        tree = Trie()
+        assert tree.size == 0
+        assert tree.is_empty() is True
+
+    def test_init_with_list(self):
+        tree = Trie([('123', 0.5), ('456', 1.2), ('78911', 0.9)])
+        assert tree.height() == 5
+        assert tree.size == 11
+        assert tree.root.children[1].price == 0
+        assert tree.root.children[1].children[2].children[3].price == 0.5
+        assert tree.is_empty() is False
+
+    # def test_init_with_list_of_strings(self):
+    #     tree = BinarySearchTree(['B', 'A', 'C'])
+    #     assert tree.root.data == 'B'
+    #     assert tree.root.left.data == 'A'
+    #     assert tree.root.right.data == 'C'
+    #     assert tree.size == 3
+    #     assert tree.is_empty() is False
