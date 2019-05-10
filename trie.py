@@ -23,24 +23,22 @@ class TrieNode(object):
     def height(self):
         """Return the height of this node (the number of edges on the longest
         downward path from this node to a descendant leaf node)."""
-        heights = []
-        height = 0
+        height = 1
+        heights = [height]
         for child in self.children:
             if child != None:
-                heights.append(child.height())
-
+                heights.append(child.height() + 1)
         return max(heights)
 
 
 class Trie(object):
 
-    def __init__(self, items=None):
+    def __init__(self, number_paths=None):
         """Initialize this binary search tree and insert the given items."""
         self.root = TrieNode()
         self.size = 1
-        if items is not None:
-            for item in items:
-                self.insert(item)
+        for path in number_paths:
+            self.insert(path)
 
     def __repr__(self):
         """Return a string representation of this trie."""
@@ -64,7 +62,6 @@ class Trie(object):
                 current = current.children[num]
             else:
                 return current.price
-
         return 0
 
     def insert(self, call_path, price):

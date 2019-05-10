@@ -21,3 +21,25 @@ class TrieNodeTest(unittest.TestCase):
         # Attach 2 with price
         node.children[2] = TrieNode(0.5)
         assert node.is_leaf() is False
+
+    def test_is_branch(self):
+        # Create node with no children
+        price = 0.04
+        node = TrieNode(price)
+        assert node.is_branch() is False
+        # Attach 2 with price
+        node.children[2] = TrieNode(0.5)
+        assert node.is_branch() is True
+
+    def test_height(self):
+        # Create node with no children
+        price = 0.04
+        node = TrieNode(price)
+        assert node.height() == 1
+        # Attach child node
+        node.children[2] = TrieNode(0.5)
+        assert node.height() == 2
+        node.children[2].children[4] = TrieNode(0.6)
+        assert node.height() == 3
+        node.children[2].children[3] = TrieNode(0.6)
+        assert node.height() == 3
