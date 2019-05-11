@@ -4,5 +4,5 @@ class Logger(object):
 
 	def log(self, number, cost):
 		self.file = open(self.file_name, "a")
-		self.file.write("Cost of calling {} is ${}.\n".format(number, cost))
+		self.file.write("+{},{}\n".format(number, cost))
 		self.file.close()

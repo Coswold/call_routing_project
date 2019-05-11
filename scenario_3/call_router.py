@@ -15,7 +15,7 @@ def read (txt):
     return contents
 
 def main(paths, phone_numbers):
-    logger = Logger("costs.txt")
+    logger = Logger("route-costs-3.txt")
     router = Trie()
     i = 0
 
