@@ -3,5 +3,7 @@
 
 ## Running the Program
 ```
-type [command] [f] once the file is open, and then type in the phone number, digit by digit until no results show up and then backspace one digit. That will give you the price you are looking for.
+type [command] [f] once the file is open, and then type in the phone number, 
+digit by digit until no results show up and then backspace one digit. 
+That will give you the price you are looking for.
 ```
