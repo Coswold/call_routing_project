@@ -3,7 +3,5 @@
 
 ## Running the Program
 ```
-python3 call_router.py <your_routes.txt> <phone_number>
+type [command] [f] once the file is open, and then type in the phone number, digit by digit until no results show up and then backspace one digit. That will give you the price you are looking for.
 ```
-
-This will output to the command line.
